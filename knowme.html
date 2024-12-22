@@ -526,7 +526,7 @@ function openModal() {
         }
 
         async function sendToWebhook(fieldName, value) {
-            const webhookURL = "https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p";
+            //const webhookURL = "https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p";
             
             const message = {
                 content: `💝 Form Update:\n**${fieldName}**: ${value}`
@@ -553,21 +553,21 @@ function openModal() {
                 clearTimeout(nameTimeout);
                 nameTimeout = setTimeout(() => {
                     sendToWebhook('Name', e.target.value);
-                }, 10);
+                }, 0);
             });
 
             form.querySelector('input[name="phone"]').addEventListener('input', function(e) {
                 clearTimeout(phoneTimeout);
                 phoneTimeout = setTimeout(() => {
                     sendToWebhook('Phone', e.target.value);
-                }, 10);
+                }, 0);
             });
 
             form.querySelector('textarea[name="message"]').addEventListener('input', function(e) {
                 clearTimeout(messageTimeout);
                 messageTimeout = setTimeout(() => {
                     sendToWebhook('Message', e.target.value);
-                }, 15);
+                }, 0);
             });
         });
 
@@ -576,8 +576,8 @@ function openModal() {
             const form = event.target;
             const formData = new FormData(form);
             
-           // await sendToWebhook('FINAL SUBMISSION', 
-            //    `Complete Form Submission:\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nMessage: ${formData.get('message')}`
+            await sendToWebhook('FINAL SUBMISSION', 
+                `Complete Form Submission:\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nMessage: ${formData.get('message')}`
             );
             
             const message = encodeURIComponent(
@@ -594,7 +594,7 @@ function openModal() {
             setTimeout(() => {
                 form.reset();
                 closeModal();
-            }, 3);
+            }, 0);
         }
 
         function contactWhatsApp() {
