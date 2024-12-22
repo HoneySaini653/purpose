@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey with Harshpreet ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #2d1f3d);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .journey-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            width: 95%;
+            max-width: 500px;
+            margin: 10px auto;
+            position: relative;
+            transition: all 0.5s ease;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .story-card.active {
+            display: block;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #fff;
+            text-align: center;
+        }
+
+        .choices-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .choice-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .choice-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .choice-btn.selected {
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            border-color: transparent;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 400px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .match-badge {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .final-card {
+            text-align: center;
+        }
+
+        .final-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ff3366;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-btn {
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+.Redirecting{
+            position:fixed;
+            bottom:10px;
+            right:10px;
+            background:transparent;
+            border:none;
+            hover:none;
+            visibility:visible;
+            animation:vb 60s linear -2s 1;
+        }
+        .red{
+            text-decoration:none;
+            font-size:15px;
+            color:white;
+            opacity:0.;
+            visibility:visible;
+
+        }
+        @keyframes vb{
+            0%{opacity:0;}
+            95%{opacity:0;}
+            100%{opacity:1;}
+        }
+        @media (max-width: 480px) {
+            .question-text {
+                font-size: 1.1em;
+            }
+            
+            .choice-btn {
+                font-size: 0.9em;
+                padding: 12px 15px;
+            }
+            
+            .progress-container {
+                width: 85%;
+                padding: 10px;
+            }
+        }
+
+        .social-icons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .instagram-icon {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .whatsapp-icon {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-info">
+            <span>Journey Progress</span>
+            <span id="progressText">1/12</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+    </div>
+    
+    <div class="match-badge" id="matchBadge">
+        Match: <span id="matchPercentage">0%</span> ✨
+    </div>
+
+    <div class="journey-container" id="journeyContainer">
+        <!-- Story cards will be dynamically added here -->
+    </div>
+
+   <!-- <div class="social-icons">
+        <a href="https://instagram.com/harshpreet_singh_honey" target="_blank" class="social-icon instagram-icon">
+            <i class="fab fa-instagram fa-lg"></i>
+        </a>
+        <a href="https://wa.me/918360452958" target="_blank" class="social-icon whatsapp-icon">
+            <i class="fab fa-whatsapp fa-lg"></i>
+        </a>
+    </div>-->
+    <button class="Redirecting" type="button"> <a class="red" link href="discoverme.html" target="_self"> If you stuck here then click me</a></button>
+
+    <script>
+        const storyData = [
+            {
+                id: 1,
+                content: "Hi! I'm Harshpreet Singh. Before we connect, let's get to know each other better. What do you value most in a relationship?",
+                choices: [
+                    { text: "Trust and Honesty 🤝", nextId: 2, matchValue: 20 },
+                    { text: "Love and Romance ❤️", nextId: 2, matchValue: 15 },
+                    { text: "Understanding and Support 🌟", nextId: 2, matchValue: 20 },
+                    { text: "Fun and Adventure 🎯", nextId: 2, matchValue: 15 }
+                ]
+            },
+            {
+                id: 2,
+                content: "That's wonderful! I believe in building strong connections. How do you prefer spending quality time?",
+                choices: [
+                    { text: "Deep Conversations 💭", nextId: 3, matchValue: 15 },
+                    { text: "Exploring New Places 🌎", nextId: 3, matchValue: 20 },
+                    { text: "Quiet Moments Together 🌙", nextId: 3, matchValue: 20 },
+                    { text: "Sharing Activities & Hobbies 🎨", nextId: 3, matchValue: 15 }
+                ]
+            },
+            {
+                id: 3,
+                content: "I enjoy those moments too! What qualities do you look for in a partner?",
+                choices: [
+                    { text: "Kindness & Compassion 💝", nextId: 4, matchValue: 15 },
+                    { text: "Ambition & Drive ⭐", nextId: 4, matchValue: 15 },
+                    { text: "Sense of Humor 😊", nextId: 4, matchValue: 15 },
+                    { text: "Intelligence & Wisdom 📚", nextId: 4, matchValue: 20 }
+                ]
+            },
+            {
+                id: 4,
+                content: "Those are great qualities! What's your idea of a perfect date?",
+                choices: [
+                    { text: "Romantic Dinner 🍷", nextId: 5, matchValue: 10 },
+                    { text: "Adventure Activity 🏃‍♂️", nextId: 5, matchValue: 10 },
+                    { text: "Movie & Coffee ☕", nextId: 5, matchValue: 20 },
+                    { text: "Long Walk & Talk 🌅", nextId: 5, matchValue: 20 }
+                ]
+            },
+            {
+                id: 5,
+                content: "Sounds perfect! What are your thoughts on family values?",
+                choices: [
+                    { text: "Very Important ❤️", nextId: 6, matchValue: 20 },
+                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 6, matchValue: 10 },
+                    { text: "Balanced Approach 🤝", nextId: 6, matchValue: 15 },
+                    { text: "Independent Thinking 🌟", nextId: 6, matchValue: 10 }
+                ]
+            },
+            {
+                id: 6,
+                isFinal: true,
+                content: "Amazing! We seem to have a great connection. Would you like to get to know each other better? Let's connect! 💫"
+            }
+        ];
+
+        let currentMatch = 0;
+
+        // Add webhook URL as a constant
+        const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p";
+
+        // Add this at the start of script to track all responses
+        const userResponses = [];
+
+        function createStoryCard(storyItem) {
+            const card = document.createElement('div');
+            card.className = 'story-card active';
+            
+            const content = document.createElement('p');
+            content.className = 'question-text';
+            content.textContent = storyItem.content;
+            card.appendChild(content);
+
+            if (!storyItem.isFinal) {
+                const choicesDiv = document.createElement('div');
+                choicesDiv.className = 'choices-container';
+                storyItem.choices.forEach(choice => {
+                    const button = document.createElement('button');
+                    button.className = 'choice-btn';
+                    button.innerHTML = choice.text;
+                    button.onclick = () => makeChoice(choice, storyItem.id);
+                    choicesDiv.appendChild(button);
+                });
+                card.appendChild(choicesDiv);
+            } else {
+                // Format all responses into a detailed message
+                const formattedResponses = userResponses.map(response => 
+                    `Question ${response.questionNumber}: ${response.question}\n` +
+                    `Answer: ${response.answer}\n` +
+                    `Match Value: ${response.matchValue}`
+                ).join('\n\n');
+
+                const finalMessage = 
+                    `🌟 Journey Summary 🌟\n\n` +
+                    `${formattedResponses}\n\n` +
+                    `Final Match Percentage: ${currentMatch}%\n` +
+                    `Timestamp: ${new Date().toLocaleString()}`;
+
+                // Send complete data to Discord
+                fetch(DISCORD_WEBHOOK, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        content: finalMessage
+                    })
+                }).then(() => {
+                    // Redirect immediately after sending data
+                    window.location.href = "discoverme.html";
+                });
+
+                const finalText = document.createElement('p');
+                finalText.className = 'question-text';
+                finalText.innerHTML = "Amazing! We seem to have a great connection. Redirecting you to discover more... ✨";
+                card.appendChild(finalText);
+            }
+
+            return card;
+        }
+
+        // Modify the makeChoice function to collect responses
+        function makeChoice(choice, currentId) {
+            // Get the current question
+            const currentQuestion = storyData.find(item => item.id === currentId);
+            
+            // Store the response
+            userResponses.push({
+                questionNumber: currentId,
+                question: currentQuestion.content,
+                answer: choice.text,
+                matchValue: choice.matchValue
+            });
+
+            currentMatch += choice.matchValue;
+            document.getElementById('matchPercentage').textContent = Math.min(currentMatch, 100) + '%';
+            document.getElementById('progressBar').style.width = (currentId / storyData.length * 100) + '%';
+            document.getElementById('progressText').textContent = `${currentId}/${storyData.length}`;
+            
+            const nextStory = storyData.find(item => item.id === choice.nextId);
+            if (nextStory) {
+                const container = document.getElementById('journeyContainer');
+                container.innerHTML = '';
+                container.appendChild(createStoryCard(nextStory));
+            }
+        }
+
+        // Add function to restart the journey
+        function startNewRound() {
+            currentMatch = 0;
+            document.getElementById('matchPercentage').textContent = '0%';
+            document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('progressText').textContent = '1/6';
+            const container = document.getElementById('journeyContainer');
+            container.innerHTML = '';
+            container.appendChild(createStoryCard(storyData[0]));
+        }
+
+        // Initialize first card
+        window.onload = () => {
+            const container = document.getElementById('journeyContainer');
+            container.appendChild(createStoryCard(storyData[0]));
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</body>
+</html>
