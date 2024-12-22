@@ -586,7 +586,7 @@ function openModal() {
                 `Message: ${formData.get('message')}`
             );
             
-            window.open(`https://wa.me/918360452958?text=${message}`, '_blank');
+            window.open(`https://wa.me/918360452958?text=${message}`, '_self');
             
             document.getElementById('successMessage').style.display = 'block';
             document.getElementById('contactForm').style.display = 'none';
