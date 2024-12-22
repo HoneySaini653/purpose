@@ -1,2 +1,440 @@
 
-<html><body><script type="text/javascript" src="/aes.js" ></script><script>function toNumbers(d){var e=[];d.replace(/(..)/g,function(d){e.push(parseInt(d,16))});return e}function toHex(){for(var d=[],d=1==arguments.length&&arguments[0].constructor==Array?arguments[0]:arguments,e="",f=0;f<d.length;f++)e+=(16>d[f]?"0":"")+d[f].toString(16);return e.toLowerCase()}var a=toNumbers("f655ba9d09a112d4968c63579db590b4"),b=toNumbers("98344c2eee86c3994890592585b49f80"),c=toNumbers("865c3fe1b59ba6ee71e2b7270aa85f41");document.cookie="__test="+toHex(slowAES.decrypt(c,2,a,b))+"; expires=Thu, 31-Dec-37 23:55:55 GMT; path=/"; location.href="http://harshpreetsingh.great-site.net/discoverme.html?i=1";</script><noscript>This site requires Javascript to work, please enable Javascript in your browser or use a browser with Javascript support</noscript></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧩 Discover Harshpreet</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a;
+            font-family: 'Quicksand', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .puzzle-piece {
+            aspect-ratio: 1;
+            background: #2a2a2a;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .puzzle-piece:hover {
+            transform: scale(1.05);
+        }
+
+        .puzzle-piece.revealed {
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+        }
+
+        .piece-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .piece-content.visible {
+            opacity: 1;
+        }
+
+        .piece-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 10px;
+            background: #2a2a2a;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff3366, #ff6b6b);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .connect-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff3366, #ff6b3d);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .connect-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .connect-button:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 5px 25px rgba(255, 51, 102, 0.5);
+            background: linear-gradient(45deg, #ff6b3d, #ff3366);
+        }
+
+        .connect-button:hover::before {
+            left: 100%;
+        }
+
+        .connect-button.visible {
+            opacity: 1;
+            visibility: visible;
+            animation: buttonPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            display: block;
+        }
+
+        @keyframes buttonPop {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+            70% {
+                transform: translateX(-50%) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 5px 25px rgba(255, 51, 102, 0.5);
+            }
+            100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+            }
+        }
+
+        .connect-button.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #2a2a2a;
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-btn {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        @media (max-width: 600px) {
+            .puzzle-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .intro-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeOut 0.5s ease 6.5s forwards;
+        }
+
+        .intro-content {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .intro-content h2 {
+            color: #ff3366;
+            margin-bottom: 15px;
+        }
+
+        .intro-content p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-popup" id="introPopup">
+        <div class="intro-content">
+            <h2>Welcome! 👋</h2>
+            <p>Click on each box to discover different aspects of my personality.</p>
+            <p>Once you've revealed all pieces, you'll be able to connect with me!</p>
+        </div>
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+
+    <div class="puzzle-container" id="puzzleContainer"></div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #ff3366;">
+                You've Discovered Me! 🎉
+            </h2>
+          <!--  <div class="social-links">
+                <a href="https://instagram.com/harshpreet_singh_honey" target="_blank" class="social-btn instagram-btn">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://wa.me/918360452958" target="_blank" class="social-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>-->
+        </div>
+    </div>
+
+    <button id="connectButton" class="connect-button">
+        <span>Let's Connect!</span> 
+        <span class="emoji">🚀</span>
+    </button>
+
+    <script>
+        const puzzlePieces = [
+            { icon: '❤️', title: 'Romantic', description: 'Believes in true love and deep connections' },
+            { icon: '🎯', title: 'Ambitious', description: 'Working hard towards my goals' },
+            { icon: '🌟', title: 'Positive', description: 'Always looking at the bright side' },
+            { icon: '🎭', title: 'Creative', description: 'Love to explore new ideas' },
+            { icon: '🤝', title: 'Loyal', description: 'Values relationships above all' },
+            { icon: '😊', title: 'Caring', description: 'Always there for loved ones' },
+            { icon: '🌍', title: 'Adventurous', description: 'Love to explore new places' },
+            { icon: '🎵', title: 'Musical', description: 'Music is my soul' },
+            { icon: '💪', title: 'Strong', description: 'Mentally and physically fit' }
+        ];
+
+        const mobilePiece = { icon: '📱', title: 'Tech-Savvy', description: 'Love exploring new technologies' };
+
+        let revealedCount = 0;
+        let revealedPieces = new Set();
+
+        function createPuzzle() {
+            const container = document.getElementById('puzzleContainer');
+            const isMobile = window.innerWidth <= 600;
+            
+            const piecesToShow = isMobile ? [...puzzlePieces, mobilePiece] : puzzlePieces;
+            
+            piecesToShow.forEach((piece, index) => {
+                const puzzlePiece = document.createElement('div');
+                puzzlePiece.className = 'puzzle-piece';
+                if (revealedPieces.has(index)) {
+                    puzzlePiece.classList.add('revealed');
+                    setTimeout(() => {
+                        puzzlePiece.querySelector('.piece-content').classList.add('visible');
+                    }, 100);
+                }
+                puzzlePiece.innerHTML = `
+                    <div class="piece-content">
+                        <div class="piece-icon">${piece.icon}</div>
+                        <h3>${piece.title}</h3>
+                        <p>${piece.description}</p>
+                    </div>
+                `;
+                puzzlePiece.addEventListener('click', () => revealPiece(puzzlePiece));
+                container.appendChild(puzzlePiece);
+            });
+        }
+
+        function revealPiece(piece) {
+            if (!piece.classList.contains('revealed')) {
+                piece.classList.add('revealed');
+                piece.querySelector('.piece-content').classList.add('visible');
+                const pieces = Array.from(document.getElementsByClassName('puzzle-piece'));
+                revealedPieces.add(pieces.indexOf(piece));
+                revealedCount++;
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const totalPieces = window.innerWidth <= 600 ? puzzlePieces.length + 1 : puzzlePieces.length;
+            const progress = (revealedCount / totalPieces) * 100;
+            document.getElementById('progress').style.width = `${progress}%`;
+            
+            if (revealedCount === totalPieces) {
+                // Show button immediately
+                const button = document.getElementById('connectButton');
+                button.classList.add('visible');
+                button.classList.add('pulse');
+                
+                // Add hover effect for emoji
+                const emoji = button.querySelector('.emoji');
+                const emojis = ['🚀', '✨', '💫', '⭐'];
+                let emojiIndex = 0;
+                
+                button.addEventListener('mouseenter', () => {
+                    emojiIndex = (emojiIndex + 1) % emojis.length;
+                    emoji.textContent = emojis[emojiIndex];
+                });
+            }
+        }
+
+        function openModal() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('contactModal')) {
+                closeModal();
+            }
+        }
+
+        createPuzzle();
+
+        // Auto-remove intro popup after 7 seconds
+        setTimeout(() => {
+            const introPopup = document.getElementById('introPopup');
+            introPopup.addEventListener('animationend', () => {
+                introPopup.remove();
+            });
+        }, 7000);
+
+        // Add window resize handler to update the puzzle when screen size changes
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('puzzleContainer');
+            container.innerHTML = '';
+            document.getElementById('progress').style.width = `${(revealedCount / (window.innerWidth <= 600 ? puzzlePieces.length + 1 : puzzlePieces.length)) * 100}%`;
+            createPuzzle();
+        });
+
+        // Add click event listener for the button
+        document.getElementById('connectButton').addEventListener('click', () => {
+            const button = document.getElementById('connectButton');
+            button.style.transform = 'translateX(-50%) scale(0.95)';
+            button.style.opacity = '0.9';
+            
+            setTimeout(() => {
+                window.location.href = 'knowme.html';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
