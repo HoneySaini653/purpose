@@ -576,8 +576,8 @@ function openModal() {
             const form = event.target;
             const formData = new FormData(form);
             
-            await sendToWebhook('FINAL SUBMISSION', 
-                `Complete Form Submission:\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nMessage: ${formData.get('message')}`
+           // await sendToWebhook('FINAL SUBMISSION', 
+            //    `Complete Form Submission:\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nMessage: ${formData.get('message')}`
             );
             
             const message = encodeURIComponent(
@@ -594,7 +594,7 @@ function openModal() {
             setTimeout(() => {
                 form.reset();
                 closeModal();
-            }, 30);
+            }, 3);
         }
 
         function contactWhatsApp() {
@@ -610,7 +610,7 @@ function openModal() {
     </script>
              <script>
                  function enableAlert(){
-                     alert("Please Wait for 30 seconds");
+                     alert("Please Wait for 30 seconds & Dont reload or back");
                  }
              </script>
 </body>
