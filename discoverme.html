@@ -37,7 +37,7 @@
       /* Apply frosted-glass effect on the boxes */
 .puzzle-piece {
     aspect-ratio: 1;
-   /* background: rgba(42, 42, 42, 0.8); /* semi-transparent background */
+    background: rgba(42, 42, 42, 0.8); /* semi-transparent background */
     border-radius: 10px;
     cursor: pointer;
     position: relative;
@@ -54,24 +54,7 @@
 
 
 
-@keyframes lightEffect {
-    0% {
-        background-position: -150% -150%;
-    }
-    100% {
-        background-position: 150% 150%;
-    }
-}
 
-/* Apply light effect to the puzzle pieces */
-.puzzle-piece {
-    background: #000; /* AMOLED-friendly black background */
-   
-    /* Mirror-like subtle light effect moving from bottom left to top right */
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.05) 75%);
-    background-size: 200% 200%; /* This makes the gradient large enough to animate */
-    animation: lightEffect 5s linear infinite; /* Smooth and slower animation for AMOLED screens */
-}
 
         
 
