@@ -410,12 +410,21 @@
         createPuzzle();
 
         // Auto-remove intro popup after 7 seconds
-        setTimeout(() => {
-            const introPopup = document.getElementById('introPopup');
-            introPopup.addEventListener('animationend', () => {
-                introPopup.remove();
-            });
-        }, 7000);
+       document.addEventListener('DOMContentLoaded', () => {
+    const introPopup = document.getElementById('introPopup');
+
+    // Function to hide the popup
+    const hidePopup = () => {
+        introPopup.style.display = 'none';
+    };
+
+    // Close the popup when clicked
+    introPopup.addEventListener('click', hidePopup);
+
+    // Auto-hide the popup after 7 seconds
+    setTimeout(hidePopup, 7000);
+});
+
 
         // Add window resize handler to update the puzzle when screen size changes
         window.addEventListener('resize', () => {
