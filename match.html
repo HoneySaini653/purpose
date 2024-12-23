@@ -217,6 +217,10 @@
             95%{opacity:0;}
             100%{opacity:1;}
         }
+         {
+   .ll{ color: white;
+    text-shadow: 1px 1px 2px white;
+}
         @media (max-width: 480px) {
             .question-text {
                 font-size: 1.1em;
@@ -415,7 +419,7 @@
 
                 const finalText = document.createElement('p');
                 finalText.className = 'question-text';
-                finalText.innerHTML = 'Amazing! We seem to have a great connection. <a link href="discoverme.html" target="_self">Next</a> ✨';
+                finalText.innerHTML = 'Amazing! We seem to have a great connection. <a class="ll" link href="discoverme.html" target="_self">Next</a> ✨';
                 card.appendChild(finalText);
             }
 
