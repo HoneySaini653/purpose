@@ -45,13 +45,27 @@
     transition: transform 0.3s ease, background 0.3s ease;
     backdrop-filter: blur(8px); /* Glass effect */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* optional shadow to enhance the effect */
+    animation: lght 3s infinite alternate;
 }
 .puzzle-piece:hover {
     transform: scale(1.05);
     background: rgba(42, 42, 42, 0.9); /* slightly darker on hover */
 }
 
-
+@keyframes lght {
+  0% {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  }
+}
 
 
 
