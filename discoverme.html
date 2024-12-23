@@ -34,39 +34,22 @@
             padding: 20px;
         }
 
-        .puzzle-piece {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background: rgba(42, 42, 42, 0.8);
-    backdrop-filter: blur(8px);
+       .puzzle-piece {
+    aspect-ratio: 1;
+    background: rgba(42, 42, 42, 0.8); /* semi-transparent background */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.1) 75%);
-    background-size: 200% 200%;
-    animation: glassy-effect 2s infinite linear;
+    transition: transform 0.3s ease, background 0.3s ease;
+    backdrop-filter: blur(8px); /* Glass effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* optional shadow to enhance the effect */
 }
-
-/* Scale effect on hover */
 .puzzle-piece:hover {
     transform: scale(1.05);
+    background: rgba(42, 42, 42, 0.9); /* slightly darker on hover */
 }
 
-/* Keyframes for the glassy effect animation */
-@keyframes glassy-effect {
-    0% {
-        background-position: 200% 0%;
-    }
-    50% {
-        background-position: 0% 100%;
-    }
-    100% {
-        background-position: 200% 0%;
-    }
-}
 
 
 
