@@ -223,7 +223,7 @@
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
             animation:qq 3s linear infinite;
-            animation:qw 10s linear infinite;
+            animation:qw 10s linear 1;
 }
         @keyframes qq{
             from{text-shadow:1px 1px 15px yellow;}
@@ -290,7 +290,7 @@
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
     animation:qq 3s linear infinite;
-    animation:qw 10s linear infinite;
+    animation:qw 10s linear 1;
 }
     </style>
 </head>
@@ -329,50 +329,50 @@
                 id: 1,
                 content: "Hi! I'm Harshpreet Singh. Before we connect, let's get to know each other better. What do you value most in a relationship?",
                 choices: [
-                    { text: "Trust and Honesty 🤝", nextId: 1, matchValue: 20 },
-                    { text: "Love and Romance ❤️", nextId: 1, matchValue: 15 },
-                    { text: "Understanding and Support 🌟", nextId: 1, matchValue: 20 },
-                    { text: "Fun and Adventure 🎯", nextId: 1, matchValue: 15 }
+                    { text: "Trust and Honesty 🤝", nextId: 2, matchValue: 20 },
+                    { text: "Love and Romance ❤️", nextId: 2, matchValue: 15 },
+                    { text: "Understanding and Support 🌟", nextId: 2, matchValue: 20 },
+                    { text: "Fun and Adventure 🎯", nextId: 2, matchValue: 15 }
                 ]
             },
             {
                 id: 2,
                 content: "That's wonderful! I believe in building strong connections. How do you prefer spending quality time?",
                 choices: [
-                    { text: "Deep Conversations 💭", nextId: 2, matchValue: 15 },
-                    { text: "Exploring New Places 🌎", nextId: 2, matchValue: 20 },
-                    { text: "Quiet Moments Together 🌙", nextId: 2, matchValue: 20 },
-                    { text: "Sharing Activities & Hobbies 🎨", nextId: 2, matchValue: 15 }
+                    { text: "Deep Conversations 💭", nextId: 3, matchValue: 15 },
+                    { text: "Exploring New Places 🌎", nextId: 3, matchValue: 20 },
+                    { text: "Quiet Moments Together 🌙", nextId: 3, matchValue: 20 },
+                    { text: "Sharing Activities & Hobbies 🎨", nextId: 3, matchValue: 15 }
                 ]
             },
             {
                 id: 3,
                 content: "I enjoy those moments too! What qualities do you look for in a partner?",
                 choices: [
-                    { text: "Kindness & Compassion 💝", nextId: 3, matchValue: 15 },
-                    { text: "Ambition & Drive ⭐", nextId: 3, matchValue: 15 },
-                    { text: "Sense of Humor 😊", nextId: 3, matchValue: 15 },
-                    { text: "Intelligence & Wisdom 📚", nextId: 3, matchValue: 20 }
+                    { text: "Kindness & Compassion 💝", nextId: 4, matchValue: 15 },
+                    { text: "Ambition & Drive ⭐", nextId: 4, matchValue: 15 },
+                    { text: "Sense of Humor 😊", nextId: 4, matchValue: 15 },
+                    { text: "Intelligence & Wisdom 📚", nextId: 4, matchValue: 20 }
                 ]
             },
             {
                 id: 4,
                 content: "Those are great qualities! What's your idea of a perfect date?",
                 choices: [
-                    { text: "Romantic Dinner 🍷", nextId: 4, matchValue: 10 },
-                    { text: "Adventure Activity 🏃‍♂️", nextId: 4, matchValue: 10 },
-                    { text: "Movie & Coffee ☕", nextId: 4, matchValue: 20 },
-                    { text: "Long Walk & Talk 🌅", nextId: 4, matchValue: 20 }
+                    { text: "Romantic Dinner 🍷", nextId: 5, matchValue: 10 },
+                    { text: "Adventure Activity 🏃‍♂️", nextId: 5, matchValue: 10 },
+                    { text: "Movie & Coffee ☕", nextId: 5, matchValue: 20 },
+                    { text: "Long Walk & Talk 🌅", nextId: 5, matchValue: 20 }
                 ]
             },
             {
                 id: 5,
                 content: "Sounds perfect! What are your thoughts on family values?",
                 choices: [
-                    { text: "Very Important ❤️", nextId: 5, matchValue: 20 },
-                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 5, matchValue: 10 },
-                    { text: "Balanced Approach 🤝", nextId: 5, matchValue: 15 },
-                    { text: "Independent Thinking 🌟", nextId: 5, matchValue: 10 }
+                    { text: "Very Important ❤️", nextId: 6, matchValue: 20 },
+                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 6, matchValue: 10 },
+                    { text: "Balanced Approach 🤝", nextId: 6, matchValue: 15 },
+                    { text: "Independent Thinking 🌟", nextId: 6, matchValue: 10 }
                 ]
             },
             {
@@ -478,7 +478,7 @@
             currentMatch = 0;
             document.getElementById('matchPercentage').textContent = '0%';
             document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = '1/6';
+            document.getElementById('progressText').textContent = '1/5';
             const container = document.getElementById('journeyContainer');
             container.innerHTML = '';
             container.appendChild(createStoryCard(storyData[0]));
