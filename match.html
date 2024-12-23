@@ -218,9 +218,16 @@
             100%{opacity:1;}
         }
          {
-   .ll{ color: white;
-    text-shadow: 1px 1px 2px white;
+        a.ll {
+    color: #fff000;
+    text-shadow: 1px 1px 15px yellow;
+    text-decoration: none;
+            animation:qq 3px linear infinite;
 }
+        @keyframes qq{
+            from{text-shadow:1px 1px 15px yellow;}
+            to{text-shadow:1px 1px 10px blue; color:red;}
+        }
         @media (max-width: 480px) {
             .question-text {
                 font-size: 1.1em;
@@ -419,7 +426,7 @@
 
                 const finalText = document.createElement('p');
                 finalText.className = 'question-text';
-                finalText.innerHTML = 'Amazing! We seem to have a great connection. <a class="ll" link href="discoverme.html" target="_self">Next</a> ✨';
+                finalText.innerHTML = 'Amazing! We seem to have a great connection.✨ <br> <a class="ll" link href="discoverme.html" target="_self">Next</a> ';
                 card.appendChild(finalText);
             }
 
