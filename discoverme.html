@@ -45,7 +45,6 @@
     transition: transform 0.3s ease, background 0.3s ease;
     backdrop-filter: blur(8px); /* Glass effect */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* optional shadow to enhance the effect */
-    animation: lght 3s infinite alternate;
     }
 .puzzle-piece:hover {
     transform: scale(1.05);
@@ -53,7 +52,28 @@
 }
 
 
+@keyframes glowEffect {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 51, 102, 0.5), 0 0 10px rgba(255, 51, 102, 0.3), 0 0 15px rgba(255, 51, 102, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(255, 51, 102, 0.7), 0 0 20px rgba(255, 51, 102, 0.5), 0 0 30px rgba(255, 51, 102, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 51, 102, 0.5), 0 0 10px rgba(255, 51, 102, 0.3), 0 0 15px rgba(255, 51, 102, 0.2);
+    }
+}
 
+/* Apply glow effect to all puzzle pieces */
+.puzzle-piece {
+    animation: glowEffect 1.5s infinite alternate; /* Apply glow animation */
+}
+
+
+
+
+
+        
 
         .puzzle-piece.revealed {
             background: linear-gradient(45deg, #ff3366, #ff6b6b);
