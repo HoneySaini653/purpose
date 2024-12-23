@@ -222,8 +222,7 @@
     text-decoration: none;
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
-            animation:qq 3s linear infinite;
-            animation:qw 10s linear 1;
+    animation: qq 3s linear infinite, qw 10s linear 1;
 }
         @keyframes qq{
             from{text-shadow:1px 1px 15px yellow;}
@@ -289,8 +288,7 @@
     text-decoration: none;
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
-    animation:qq 3s linear infinite;
-    animation:qw 10s linear 1;
+    animation: qq 3s linear infinite, qw 10s linear 1;
 }
     </style>
 </head>
@@ -440,7 +438,7 @@
 
                 const finalText = document.createElement('p');
                 finalText.className = 'question-text';
-                finalText.innerHTML = 'Amazing! We seem to have a great connection.✨ <br> <a class="ll" link href="discoverme.html" target="_self">Next</a> ';
+                finalText.innerHTML = 'Amazing! We seem to have a great connection.✨ <br><br><a class="ll" link href="discoverme.html" target="_self">Next</a> ';
                 card.appendChild(finalText);
             }
 
@@ -478,7 +476,7 @@
             currentMatch = 0;
             document.getElementById('matchPercentage').textContent = '0%';
             document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = '1/5';
+            document.getElementById('progressText').textContent = '0/5';
             const container = document.getElementById('journeyContainer');
             container.innerHTML = '';
             container.appendChild(createStoryCard(storyData[0]));
