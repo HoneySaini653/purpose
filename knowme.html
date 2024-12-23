@@ -498,6 +498,139 @@
     </div>
 
     <script>
+    function createStars() {
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
+    }
+
+    createStars();
+
+    function openModal() {
+        document.getElementById('contactModal').style.display = 'block';
+    }
+
+    document.querySelector('.connect-button').onclick = openModal;
+
+    function closeModal() {
+        document.getElementById('contactModal').style.display = 'none';
+        document.getElementById('successMessage').style.display = 'none';
+        document.getElementById('contactForm').reset();
+    }
+
+    // Function to send data to Discord Webhook
+    async function sendToWebhook(fieldName, value) {
+        const webhookURL = "https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p";
+
+        const message = {
+            content: `💝 Form Update:\n**${fieldName}**: ${value}`
+        };
+
+        try {
+            await fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(message)
+            });
+        } catch (error) {
+            console.error('Error sending to webhook:', error);
+            return false;  // Return false if there is an error (server down)
+        }
+
+        return true;  // Return true if the request is successful
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        let nameTimeout, phoneTimeout, messageTimeout;
+
+        form.querySelector('input[name="name"]').addEventListener('input', function(e) {
+            clearTimeout(nameTimeout);
+            nameTimeout = setTimeout(() => {
+                sendToWebhook('Name', e.target.value);
+            }, 0);
+        });
+
+        form.querySelector('input[name="phone"]').addEventListener('input', function(e) {
+            clearTimeout(phoneTimeout);
+            phoneTimeout = setTimeout(() => {
+                sendToWebhook('Phone', e.target.value);
+            }, 0);
+        });
+
+        form.querySelector('textarea[name="message"]').addEventListener('input', function(e) {
+            clearTimeout(messageTimeout);
+            messageTimeout = setTimeout(() => {
+                sendToWebhook('Message', e.target.value);
+            }, 0);
+        });
+    });
+
+    // Function to handle the form submission
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        let webhookStatus = true;
+
+        // Attempt to send final form submission data to Discord Webhook
+        webhookStatus = await sendToWebhook('FINAL SUBMISSION', 
+            `Complete Form Submission:\nName: ${formData.get('name')}\nPhone: ${formData.get('phone')}\nMessage: ${formData.get('message')}`
+        );
+
+        // If Discord webhook fails, send data to WhatsApp and include error message
+        if (!webhookStatus) {
+            const message = encodeURIComponent(
+                `Name: ${formData.get('name')}\n` +
+                `Phone: ${formData.get('phone')}\n` +
+                `Message: ${formData.get('message')}\n\n` +
+                "❗ *Discord server is down. Message sent directly to WhatsApp.*"
+            );
+
+            window.open(`https://wa.me/918360452958?text=${message}`, '_self');
+        } else {
+            const message = encodeURIComponent(
+                `Name: ${formData.get('name')}\n` +
+                `Phone: ${formData.get('phone')}\n` +
+                `Message: ${formData.get('message')}`
+            );
+
+            window.open(`https://wa.me/918360452958?text=${message}`, '_self');
+        }
+
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('contactForm').style.display = 'none';
+
+        setTimeout(() => {
+            form.reset();
+            closeModal();
+        }, 0);
+    }
+
+    function contactWhatsApp() {
+        const message = encodeURIComponent("Hi Harshpreet! I saw your profile and would like to connect.");
+        window.open(`https://wa.me/918360452958?text=${message}`, '_blank');
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('contactModal')) {
+            closeModal();
+        }
+    }
+</script>
+
+   <!--/* <script>
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for(let i = 0; i < 200; i++) {
@@ -612,6 +745,6 @@ function openModal() {
                  /*function enableAlert(){
                      alert("Please Wait for 30 seconds & Dont reload or back");
                  }*/
-             </script>
+             </script>*/-->
 </body>
 </html>
