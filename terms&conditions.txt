@@ -1,28 +1,77 @@
-Terms and Conditions / Disclaimer
+Terms and Conditions
 
-Welcome to our website! Please read the following carefully before proceeding. By interacting with this website, you agree to the following:
+Last updated: December 23, 2024
 
-Purpose of the Website:
-This site is created for personal interaction and entertainment purposes only.
-It is not a professional dating or matchmaking service.
+Welcome to Harshpreet Singh's personal website. By accessing and using this website, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully.
 
-Consent to Participate:
-By using this website, including answering the Q&A or filling out forms, you agree that:
-You are at least 18 years old.
-Your responses and interactions may be recorded and sent to the website owner's private Discord server for personal evaluation and storage.
 
-Data Collection and Use:
-Any data you provide, including Q&A answers, partially filled forms, and submitted information (such as name, phone number, and message), will be visible to the website owner in real-time.
-This data will not be shared publicly and will be used solely for personal purposes.
+1. General Information
 
-Agreement to Terms:
-Clicking on any button, including "Check Our Match","Send Message" ,signifies your agreement to these Terms and Conditions.
+This website is a personal platform where users can interact with content, including personal details, photos, videos, and interactive elements. By using the site, you acknowledge that you agree to the terms outlined below.
 
-Privacy:
-Your data is stored securely and is accessible only to the website owner. However, as this is a personal project, no professional data protection measures are guaranteed.
 
-Interactive Process:
-Your answers to the Q&A section reflect your thoughts and will influence the progression of the interaction. The results are subjective and intended for entertainment purposes.
+2. Data Collection and Usage
 
-User Responsibility:
-You are expected to engage honestly and respectfully. Any misuse of the platform may lead to restricted access.
+We collect certain personal data from visitors, including but not limited to: IP addresses, device information (e.g., browser type, operating system), location data, and interactions on the site. This data is used for analytics and personalizing the user experience.
+We may collect photos, videos, and form data live as the user interacts with the site, even if they do not submit the form. This data is sent to a Discord webhook for notification purposes.
+Data collected may include interactions such as clicking buttons, selecting options, typing in form fields, and viewing content.
+
+
+3. Camera and Microphone Permissions
+
+The website may request permission to access your device's camera and microphone. By using this site, you consent to the collection of live photos and videos, which may be used for personalization or interaction with content.
+We will request access to these features only with clear prompts and the option to decline or accept.
+
+
+4. Form Data and Live Webhook Notifications
+
+Even if you do not submit a form, any data you enter (such as name, mobile, and message) may be sent live to a Discord webhook, along with photos and videos taken during your interaction with the site.
+This means that even if you exit the page without submitting a form, your interaction data may still be recorded and sent to the Discord webhook for the website owner’s reference.
+
+
+5. Privacy and Security
+
+We value your privacy and take reasonable measures to secure the data we collect. However, please be aware that no method of transmission over the internet is completely secure. While we strive to protect your personal information, we cannot guarantee its absolute security.
+By using the site, you acknowledge and agree that you are solely responsible for any data shared through the platform.
+
+
+6. Intellectual Property
+
+All content on this website, including text, images, videos, and interactive elements, is the property of Harshpreet Singh and is protected by copyright laws.
+You may not reproduce, distribute, or otherwise use the content without permission.
+
+
+7. User Obligations
+
+By using the website, you agree not to engage in any activities that could harm the website or its users, such as sending malicious code, spamming, or infringing upon the intellectual property rights of others.
+
+
+8. Discord Webhook Usage
+
+This website integrates a Discord webhook for sending visitor notifications, including but not limited to IP addresses, device information, photos, videos, and form data. By using this website, you consent to the transmission of this data to Discord, whether or not you submit a form.
+The webhook will be triggered even if the user exits the page before submitting a form or completing the interaction.
+
+
+9. Third-Party Services
+
+This site may use third-party services such as IPify for collecting certain data. By using this website, you acknowledge that you are bound by the terms and conditions of these third-party services.
+
+
+10. Consent to Terms
+
+By continuing to browse or use this website, you agree to abide by these Terms and Conditions. If you do not agree with any part of these terms, please do not use this website.
+
+
+11. Changes to Terms
+
+We reserve the right to update or modify these Terms and Conditions at any time. Any changes will be posted on this page with an updated "Last Updated" date. Continued use of the site after changes constitutes acceptance of the updated terms.
+
+
+12. Governing Law
+
+These Terms and Conditions are governed by the laws of [Your Country/Region]. Any disputes arising out of or related to these terms will be resolved in the competent courts of [Your Country/Region].
+
+
+13. Contact Information
+
+If you have any questions about these Terms and Conditions, please contact us at email : hs112404@gmail.com.
