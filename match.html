@@ -223,10 +223,16 @@
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
             animation:qq 3s linear infinite;
+            animation:qw 10s linear infinite;
 }
         @keyframes qq{
             from{text-shadow:1px 1px 15px yellow;}
             to{text-shadow:1px 1px 10px blue; color:red;}
+        }
+        @keyframes qw{
+            0%{visibility:hidden;}
+            95%{visibility:hidden;}
+            100%{visibility:visible;}
         }
         @media (max-width: 480px) {
             .question-text {
@@ -284,6 +290,7 @@
     text-shadow: 1px 1px 15px #e0f802;
     background: transparent;
     animation:qq 3s linear infinite;
+    animation:qw 10s linear infinite;
 }
     </style>
 </head>
@@ -375,7 +382,7 @@
             }
         ];
 
-        let currentMatch = 1;
+        let currentMatch = 0;
 
         // Add webhook URL as a constant
         const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p";
