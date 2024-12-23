@@ -44,7 +44,7 @@
     overflow: hidden;
     transition: transform 0.3s ease, background 0.3s ease;
     backdrop-filter: blur(8px); /* Glass effect */
-    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* optional shadow to enhance the effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* optional shadow to enhance the effect */
     }
 .puzzle-piece:hover {
     transform: scale(1.05);
@@ -56,24 +56,22 @@
 
 @keyframes lightEffect {
     0% {
-        background-position: -200% -200%;
+        background-position: -150% -150%;
     }
     100% {
-        background-position: 200% 200%;
+        background-position: 150% 150%;
     }
 }
 
 /* Apply light effect to the puzzle pieces */
 .puzzle-piece {
-    background: #333; /* Base color for the piece */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow to enhance the effect */
-    
-    /* Mirror-like reflective light moving from bottom left to top right */
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 75%);
+    background: #000; /* AMOLED-friendly black background */
+   
+    /* Mirror-like subtle light effect moving from bottom left to top right */
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.05) 75%);
     background-size: 200% 200%; /* This makes the gradient large enough to animate */
-    animation: lightEffect 3s linear infinite; /* Smooth animation of light effect */
+    animation: lightEffect 5s linear infinite; /* Smooth and slower animation for AMOLED screens */
 }
-
 
         
 
