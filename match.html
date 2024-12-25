@@ -300,7 +300,7 @@
     <div class="progress-container">
         <div class="progress-info">
             <span>Journey Progress</span>
-            <span id="progressText">0/20</span>
+            <span id="progressText">0/6</span>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progressBar"></div>
@@ -326,6 +326,64 @@
     <!--<button class="Redirecting" type="button"> <a class="red" link href="discoverme.html" target="_self"> If you stuck here then click me</a></button>-->
 
     <script>
+        const storyData = [
+            {
+                id: 1,
+                content: "Hi! I'm Harshpreet Singh. Before we connect, let's get to know each other better. What do you value most in a relationship?",
+                choices: [
+                    { text: "Trust and Honesty 🤝", nextId: 2, matchValue: 20 },
+                    { text: "Love and Romance ❤️", nextId: 2, matchValue: 15 },
+                    { text: "Understanding and Support 🌟", nextId: 2, matchValue: 20 },
+                    { text: "Fun and Adventure 🎯", nextId: 2, matchValue: 15 }
+                ]
+            },
+            {
+                id: 2,
+                content: "That's wonderful! I believe in building strong connections. How do you prefer spending quality time?",
+                choices: [
+                    { text: "Deep Conversations 💭", nextId: 3, matchValue: 15 },
+                    { text: "Exploring New Places 🌎", nextId: 3, matchValue: 15 },
+                    { text: "Quiet Moments Together 🌙", nextId: 3, matchValue: 15 },
+                    { text: "Sharing Activities & Hobbies 🎨", nextId: 3, matchValue: 15 }
+                ]
+            },
+            {
+                id: 3,
+                content: "I enjoy those moments too! What qualities do you look for in a partner?",
+                choices: [
+                    { text: "Kindness & Compassion 💝", nextId: 4, matchValue: 15 },
+                    { text: "Ambition & Drive ⭐", nextId: 4, matchValue: 15 },
+                    { text: "Sense of Humor 😊", nextId: 4, matchValue: 15 },
+                    { text: "Intelligence & Wisdom 📚", nextId: 4, matchValue: 15 }
+                ]
+            },
+            {
+                id: 4,
+                content: "Those are great qualities! What's your idea of a perfect date?",
+                choices: [
+                    { text: "Romantic Dinner 🍷", nextId: 5, matchValue: 10 },
+                    { text: "Adventure Activity 🏃‍♂️", nextId: 5, matchValue: 10 },
+                    { text: "Movie & Coffee ☕", nextId: 5, matchValue: 10 },
+                    { text: "Long Walk & Talk 🌅", nextId: 5, matchValue: 10 }
+                ]
+            },
+            {
+                id: 5,
+                content: "Sounds perfect! What are your thoughts on family values?",
+                choices: [
+                    { text: "Very Important ❤️", nextId: 6, matchValue: 15 },
+                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 6, matchValue: 10 },
+                    { text: "Balanced Approach 🤝", nextId: 6, matchValue: 15 },
+                    { text: "Independent Thinking 🌟", nextId: 6, matchValue: 10 }
+                ]
+            },
+            {
+                id: 6,
+                isFinal: true,
+                content: "Amazing! We seem to have a great connection. Would you like to get to know each other better? Let's connect! 💫"
+            }
+        ];
+
        /* const storyData = [
             {
                 id: 1,
@@ -467,7 +525,7 @@
             { text: "Yes, I’ve had intimate relationships 💏", nextId: 15, matchValue: 0 },
             { text: "I’ve been intimate but not in serious relationships 💫", nextId: 15, matchValue: 0 },
             { text: "No, I haven’t had any physical relationships 💭", nextId: 15, matchValue: 5.5 },
-            { text: "It’s complicated and personal 🤐", nextId: 15, matchValue: 0 }
+            { text: "It’s complicated and personal 🤐", nextId: 15, matchValue: 0 },
             { text: "Skip ➡️", nextId: 15, matchValue: 0 }
         ]
     },
@@ -488,7 +546,7 @@
             { text: "Yes, it’s something that should be discussed 🔊", nextId: 17, matchValue: 1 },
             { text: "I prefer to keep that private 🤐", nextId: 17, matchValue: 0 },
             { text: "I think it’s a personal topic for a later time 🕰️", nextId: 17, matchValue: 2 },
-            { text: "It’s not something I’ve thought about 🧠", nextId: 17, matchValue: 5.5 }
+            { text: "It’s not something I’ve thought about 🧠", nextId: 17, matchValue: 5.5 },
             { text: "Skip ➡️", nextId: 9, matchValue: 0 }
         ]
     },
@@ -526,7 +584,7 @@
                 isFinal: true,
                 content: "Amazing! We seem to have a great connection. Would you like to get to know each other better? Let's connect! 💫"
             }
-        ];*/
+        ];
         const storyData = [
     {
         id: 1,
@@ -725,7 +783,7 @@
         isFinal: true,
         content: "Amazing! We seem to have a great connection. Would you like to get to know each other better? Let's connect! 💫"
     }
-];
+];*/
 
 
         let currentMatch = 0;
@@ -824,7 +882,7 @@
             currentMatch = 0;
             document.getElementById('matchPercentage').textContent = '0%';
             document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = '1/20';
+            document.getElementById('progressText').textContent = '1/6';
             const container = document.getElementById('journeyContainer');
             container.innerHTML = '';
             container.appendChild(createStoryCard(storyData[0]));
