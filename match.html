@@ -300,7 +300,7 @@
     <div class="progress-container">
         <div class="progress-info">
             <span>Journey Progress</span>
-            <span id="progressText">0/6</span>
+            <span id="progressText">0/20</span>
         </div>
         <div class="progress-bar">
             <div class="progress-fill" id="progressBar"></div>
@@ -331,54 +331,200 @@
                 id: 1,
                 content: "Hi! I'm Harshpreet Singh. Before we connect, let's get to know each other better. What do you value most in a relationship?",
                 choices: [
-                    { text: "Trust and Honesty 🤝", nextId: 2, matchValue: 20 },
-                    { text: "Love and Romance ❤️", nextId: 2, matchValue: 15 },
-                    { text: "Understanding and Support 🌟", nextId: 2, matchValue: 20 },
-                    { text: "Fun and Adventure 🎯", nextId: 2, matchValue: 15 }
+                    { text: "Trust and Honesty 🤝", nextId: 2, matchValue: 5.5 },
+                    { text: "Love and Romance ❤️", nextId: 2, matchValue: 5 },
+                    { text: "Understanding and Support 🌟", nextId: 2, matchValue: 2 },
+                    { text: "Fun and Adventure 🎯", nextId: 2, matchValue: 1 }
                 ]
             },
             {
                 id: 2,
                 content: "That's wonderful! I believe in building strong connections. How do you prefer spending quality time?",
                 choices: [
-                    { text: "Deep Conversations 💭", nextId: 3, matchValue: 15 },
-                    { text: "Exploring New Places 🌎", nextId: 3, matchValue: 20 },
-                    { text: "Quiet Moments Together 🌙", nextId: 3, matchValue: 20 },
-                    { text: "Sharing Activities & Hobbies 🎨", nextId: 3, matchValue: 15 }
+                    { text: "Deep Conversations 💭", nextId: 3, matchValue: 5 },
+                    { text: "Exploring New Places 🌎", nextId: 3, matchValue: 5 },
+                    { text: "Quiet Moments Together 🌙", nextId: 3, matchValue: 5.5 },
+                    { text: "Sharing Activities & Hobbies 🎨", nextId: 3, matchValue: 2 }
                 ]
             },
             {
                 id: 3,
                 content: "I enjoy those moments too! What qualities do you look for in a partner?",
                 choices: [
-                    { text: "Kindness & Compassion 💝", nextId: 4, matchValue: 15 },
-                    { text: "Ambition & Drive ⭐", nextId: 4, matchValue: 15 },
-                    { text: "Sense of Humor 😊", nextId: 4, matchValue: 15 },
-                    { text: "Intelligence & Wisdom 📚", nextId: 4, matchValue: 20 }
+                    { text: "Kindness & Compassion 💝", nextId: 4, matchValue: 5 },
+                    { text: "Ambition & Drive ⭐", nextId: 4, matchValue: 2 },
+                    { text: "Sense of Humor 😊", nextId: 4, matchValue: 5 },
+                    { text: "Intelligence & Wisdom 📚", nextId: 4, matchValue: 5.5 }
                 ]
             },
             {
                 id: 4,
                 content: "Those are great qualities! What's your idea of a perfect date?",
                 choices: [
-                    { text: "Romantic Dinner 🍷", nextId: 5, matchValue: 10 },
-                    { text: "Adventure Activity 🏃‍♂️", nextId: 5, matchValue: 10 },
-                    { text: "Movie & Coffee ☕", nextId: 5, matchValue: 20 },
-                    { text: "Long Walk & Talk 🌅", nextId: 5, matchValue: 20 }
+                    { text: "Romantic Dinner 🍷", nextId: 5, matchValue: 2 },
+                    { text: "Adventure Activity 🏃‍♂️", nextId: 5, matchValue: 0 },
+                    { text: "Movie & Coffee ☕", nextId: 5, matchValue: 5.5 },
+                    { text: "Long Walk & Talk 🌅", nextId: 5, matchValue: 5.5 }
                 ]
             },
             {
                 id: 5,
                 content: "Sounds perfect! What are your thoughts on family values?",
                 choices: [
-                    { text: "Very Important ❤️", nextId: 6, matchValue: 20 },
-                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 6, matchValue: 10 },
-                    { text: "Balanced Approach 🤝", nextId: 6, matchValue: 15 },
-                    { text: "Independent Thinking 🌟", nextId: 6, matchValue: 10 }
+                    { text: "Very Important ❤️", nextId: 6, matchValue: 5.5 },
+                    { text: "Somewhat Important 👨‍👩‍👧‍👦", nextId: 6, matchValue: 0 },
+                    { text: "Balanced Approach 🤝", nextId: 6, matchValue: 2 },
+                    { text: "Independent Thinking 🌟", nextId: 6, matchValue: 0 }
                 ]
             },
             {
-                id: 6,
+        id: 6,
+        content: "We all have our unique qualities. What type of person do you like most in a partner?",
+        choices: [
+            { text: "Playful and energetic 🎉", nextId: 7, matchValue: 1 },
+            { text: "Calm and peaceful 🌊", nextId: 7, matchValue: 1 },
+            { text: "Hardworking and ambitious 🚀", nextId: 7, matchValue: 1 },
+            { text: "Kind and caring ❤️", nextId: 7, matchValue: 5.5 }
+        ]
+    },
+            {
+        id: 7,
+        content: "Do you think love can happen at first sight?",
+        choices: [
+            { text: "Yes, I believe it can! ❤️", nextId: 8, matchValue: 5.5 },
+            { text: "No, love takes time ⏳", nextId: 8, matchValue: 5.5 },
+            { text: "Maybe, depends on the situation ✨", nextId: 8, matchValue: 5.5 },
+            { text: "I think it's just attraction 🌟", nextId: 8, matchValue: 5.5 }
+        ]
+    },
+            {
+        id: 8,
+        content: "Have you ever been in a romantic relationship?",
+        choices: [
+            { text: "Yes, I’ve had serious relationships 👫", nextId: 9, matchValue: 0 },
+            { text: "Yes, but mostly short-term relationships 🌀", nextId: 9, matchValue: 0 },
+            { text: "I’ve never been in a romantic relationship 🚶‍♂️", nextId: 9, matchValue: 5.5 },
+            { text: "It’s complicated 🤷", nextId: 9, matchValue:5.5 },
+            { text: "Skip ➡️", nextId: 9, matchValue: 0 }
+        ]
+    },
+            {
+        id: 9,
+        content: "Why did your last relationship end? (If you feel comfortable sharing.)",
+        choices: [
+            { text: "We just grew apart 🌱", nextId: 10, matchValue: 0 },
+            { text: "There was no trust 💔", nextId: 10, matchValue: 0 },
+            { text: "We wanted different things 🎯", nextId: 10, matchValue: 0 },
+            { text: "We ended it peacefully 🤝", nextId: 10, matchValue: 0 },
+            { text: "It was because of family reasons 👨‍👩‍👧‍👦", nextId: 10, matchValue: 0 },
+            { text: "Skip ➡️", nextId: 10, matchValue: 0 }
+        ]
+    },
+            {
+        id: 10,
+        content: "Do you think family matters play a big role in a relationship?",
+        choices: [
+            { text: "Yes, family is very important 👨‍👩‍👧‍👦", nextId: 11, matchValue: 5.5 },
+            { text: "They matter, but not too much 👏", nextId: 11, matchValue: 0 },
+            { text: "Not really, it’s between two people ❤️", nextId: 11, matchValue: 0 },
+            { text: "It depends on the situation 🤔", nextId: 11, matchValue: 0 }
+        ]
+    },
+            {
+        id: 11,
+        content: "How do you feel about giving your partner personal space?",
+        choices: [
+            { text: "I believe in giving space when needed ⏳", nextId: 12, matchValue: 5 },
+            { text: "I think it's important to stay close ❤️", nextId: 12, matchValue: 2 },
+            { text: "It depends on the situation 🤷", nextId: 12, matchValue: 5.5 },
+            { text: "I prefer to always be together 🌟", nextId: 12, matchValue: 5.5 }
+        ]
+    },
+            {
+        id: 12,
+        content: "Do you believe that being open with a partner about your past is important?",
+        choices: [
+            { text: "Yes, honesty is key 🔑", nextId: 13, matchValue: 5.5 },
+            { text: "Only if it’s necessary 🤔", nextId: 13, matchValue: 1 },
+            { text: "No, the past is in the past 🕰️", nextId: 13, matchValue: 2 },
+            { text: "It’s up to the situation 💭", nextId: 13, matchValue: 5.5 }
+        ]
+    },
+            {
+        id: 13,
+        content: "How important is physical intimacy in a relationship for you?",
+        choices: [
+            { text: "Very important, it’s part of connection 💑", nextId: 14, matchValue: 5.5 },
+            { text: "It’s important, but not everything ❤️", nextId: 14, matchValue: 5.5 },
+            { text: "Not very important for me 🚶‍♂️", nextId: 10, matchValue: 0 },
+            { text: "It depends on the emotional connection 🫶", nextId: 14, matchValue: 0 }
+        ]
+    },
+            {
+        id: 14,
+        content: "Have you had any serious physical relationships in the past?",
+        choices: [
+            { text: "Yes, I’ve had intimate relationships 💏", nextId: 15, matchValue: 0 },
+            { text: "I’ve been intimate but not in serious relationships 💫", nextId: 15, matchValue: 0 },
+            { text: "No, I haven’t had any physical relationships 💭", nextId: 15, matchValue: 5.5 },
+            { text: "It’s complicated and personal 🤐", nextId: 15, matchValue: 0 }
+            { text: "Skip ➡️", nextId: 15, matchValue: 0 }
+        ]
+    },
+            {
+        id: 15,
+        content: "Do you think being intimate before marriage is important in a relationship?",
+        choices: [
+            { text: "Yes, it’s part of growing closer 💑", nextId: 16, matchValue: 0 },
+            { text: "No, I think it should wait until marriage 💍", nextId: 16, matchValue: 5.5 },
+            { text: "It depends on the relationship ❤️", nextId: 16, matchValue: 4 },
+            { text: "I don’t focus on that aspect 🤷", nextId: 16, matchValue: 0 }
+        ]
+    },
+            {
+        id: 16,
+        content: "Would you prefer to discuss your first experiences with intimacy openly?",
+        choices: [
+            { text: "Yes, it’s something that should be discussed 🔊", nextId: 17, matchValue: 1 },
+            { text: "I prefer to keep that private 🤐", nextId: 17, matchValue: 0 },
+            { text: "I think it’s a personal topic for a later time 🕰️", nextId: 17, matchValue: 2 },
+            { text: "It’s not something I’ve thought about 🧠", nextId: 17, matchValue: 5.5 }
+            { text: "Skip ➡️", nextId: 9, matchValue: 0 }
+        ]
+    },
+            {
+        id: 17,
+        content: "What do you think about talking openly about past experiences in relationships?",
+        choices: [
+            { text: "It helps in building trust 💬", nextId: 18, matchValue: 0 },
+            { text: "It’s not necessary to share everything 🕵️‍♂️", nextId: 18, matchValue: 3 },
+            { text: "I think it’s important to understand each other’s pasts 🧠", nextId: 18, matchValue: 2 },
+            { text: "It depends on the relationship 🤷", nextId: 18, matchValue: 5.5 }
+        ]
+    },
+             {
+        id: 18,
+        content: "Would you consider waiting until you're in a committed relationship before becoming intimate with someone?",
+        choices: [
+            { text: "Yes, I believe in waiting until we're committed 💍", nextId: 19, matchValue: 5.5 },
+            { text: "No, I think it’s fine to be intimate when it feels right ❤️", nextId: 19, matchValue: 0 },
+            { text: "It depends on the situation 💭", nextId: 19, matchValue: 0 },
+            { text: "I’m not sure 🤔", nextId: 19, matchValue: 0 }
+        ]
+    },
+            {
+        id: 19,
+        content: "Thank you for sharing! Would you like to continue?",
+        choices: [
+            { text: "Yes, let's go further!", nextId: 20, matchValue: 0 },
+            { text: "No, that’s enough for now.", nextId: 20, matchValue: 0 }
+        ]
+    }
+
+
+            
+            {
+                id: 20,
                 isFinal: true,
                 content: "Amazing! We seem to have a great connection. Would you like to get to know each other better? Let's connect! 💫"
             }
@@ -480,7 +626,7 @@
             currentMatch = 0;
             document.getElementById('matchPercentage').textContent = '0%';
             document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = '1/6';
+            document.getElementById('progressText').textContent = '1/20';
             const container = document.getElementById('journeyContainer');
             container.innerHTML = '';
             container.appendChild(createStoryCard(storyData[0]));
