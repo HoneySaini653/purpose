@@ -9,7 +9,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: cursive;
         }
 
         .song-details {
@@ -45,6 +45,9 @@
             color: #fff;
             min-height: 100vh;
         }
+        h1.story-title {
+    font-family: cursive;
+}
 
         .journey-container {
             max-width: 800px;
@@ -84,7 +87,7 @@
         }
 
         .letter {
-            font-size: 1.2em;
+            font-size: 1.6em;
             line-height: 1.6;
             margin-bottom: 20px;
         }
@@ -412,6 +415,22 @@
             display: inline-block;
             margin-top: 20px;
         }
+        /* Specific styling for Narzo 50a */
+@media (min-width: 1080px) and (max-width: 2400px) and (orientation: portrait) {
+    .puzzle-letter {
+        width: 35px;
+        height: 40px;
+    }
+}
+
+/* Optional general scaling for smaller devices */
+@media (max-width: 600px) {
+    .puzzle-letter {
+        width: 30px;
+        height: 35px;
+        font-size: 1em;
+    }
+}
     </style>
 </head>
 <body>
