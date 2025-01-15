@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Journey ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .song-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        #audioPlayer {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .spotify-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1DB954;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .spotify-link:hover {
+            background: #1ed760;
+            transform: translateY(-2px);
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .journey-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .story-card {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideIn 0.6s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .story-title {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #e94560;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .choice-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .choice-btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .choice-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px;
+            padding-bottom: 50px;
+            transform: rotate(-3deg) scale(1);
+            color: #333;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            animation: float 4s ease-in infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        .mini-game {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .word-puzzle {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .puzzle-letter {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #e94560, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+            font-weight: bold;
+            font-size: 1.2em;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .puzzle-letter:hover {
+            transform: scale(1.1);
+        }
+
+        .hidden-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 30px;
+            border-radius: 0;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            z-index: 1000;
+            display: none;
+        }
+
+        .reveal {
+            height: 200px;
+        }
+
+        .song-input {
+            width: calc(100% - 120px);  /* Make room for search button */
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid #e94560;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+
+        .song-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #songResult {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        #songResult iframe {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .typewriter {
+            overflow: hidden;
+            white-space: pre-wrap;
+            margin: 0 auto;
+            animation: fadeIn 2s ease-in;
+            line-height: 1.6;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .custom-player {
+            width: 100%;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .custom-player iframe {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            display: block;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #playerContainer {
+            width: 100%;
+        }
+
+        #playerContainer iframe {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .puzzle-celebration {
+            position: fixed;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .celebration-emoji {
+            font-size: 40px;
+            opacity: 0;
+            animation: floatUp 2s forwards;
+            position: absolute;
+            bottom: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .custom-player audio {
+            width: 100%;
+            height: 40px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-player audio::-webkit-media-controls-panel {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-player audio::-webkit-media-controls-current-time-display,
+        .custom-player audio::-webkit-media-controls-time-remaining-display {
+            color: white;
+        }
+
+        .song-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .spotify-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1DB954;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .spotify-link:hover {
+            background: #1ed760;
+            transform: translateY(-2px);
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #e94560, 0 0 10px #e94560, 0 0 15px #e94560, 0 0 20px #e94560;
+            }
+            100% {
+                text-shadow: 0 0 10px #e94560, 0 0 20px #e94560, 0 0 30px #e94560, 0 0 40px #e94560;
+            }
+        }
+
+        /* Initially hide the next message button */
+        #nextMessageButton {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .message-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            z-index: 1000;
+            display: none;
+            padding: 30px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .message-box {
+            max-height: 100%;
+            overflow-y: auto;
+            padding: 0px;
+            border-radius: 8px;
+            background: rgb(0, 0, 0);
+        }
+
+        .clickable-text {
+            color: #e94560;
+            cursor: pointer;
+            text-decoration: underline;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    <div class="journey-container">
+        <h1 class="story-title">Hey Harpreet! 🌟</h1>
+
+        <div class="story-card">
+            <div class="letter">
+                Dear Harpreet,
+                <br><br>
+                Sometimes the best friendships start with a simple hello. So here I am, 
+                saying hello in perhaps the most unique way possible! 🌸
+            </div>
+            <div class="choice-container">
+                <button class="choice-btn" onclick="revealNext(1)">Continue Reading ✨</button>
+            </div>
+        </div>
+
+        <div id="section1" class="story-card" style="display: none;">
+            
+            <div class="message-box">
+                Would you like to solve a little puzzle? Each letter reveals something special!
+            </div>
+            <div class="mini-game">
+                <div class="word-puzzle" id="puzzle">
+                    <!-- Puzzle will be generated by JS -->
+                </div>
+            </div>
+        </div>
+
+        <div id="section2" class="story-card" style="display: none;">
+            
+            <div class="choice-container">
+                <button class="choice-btn" onclick="showSpecialMessage()">Open Special Message 💌</button>
+            </div>
+            <div id="messageContainer" class="message-container">
+                <div id="specialMessage" class="message-box"></div>
+            </div>
+         <!--   <div id="songSection" class="story-card" style="display: none;">
+                <div class="letter">
+                    <p>What's your favorite song? Let me find it for you! 🎵</p>
+                    <input type="text" id="songInput" class="song-input" placeholder="Type your favorite song...">
+                </div>
+                <div id="songResult"></div>
+            </div>-->
+        </div>
+    </div>
+
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                document.getElementById('heartsContainer').appendChild(heart);
+
+                setTimeout(() => heart.remove(), 4000);
+            }
+
+            setInterval(createHeart, 300);
+
+            // Initialize puzzle
+            const puzzleWord = "FRIENDSHIP";
+            const puzzle = document.getElementById('puzzle');
+            let revealedLetters = new Set();
+
+            // Make revealNext function globally available
+            window.revealNext = function(section) {
+                const nextSection = document.getElementById(`section${section}`);
+                nextSection.style.display = 'block';
+                
+                // Smooth scroll to next section
+                setTimeout(() => {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+
+                if (section === 1) {
+                    setupPuzzle();
+                }
+            };
+
+            function revealLetter(div, index) {
+                div.textContent = div.dataset.letter;
+                div.style.background = 'linear-gradient(45deg, #4CAF50, #45e9a6)';
+                div.style.transform = 'scale(1.1) rotate(360deg)';
+                div.style.transition = 'all 0.5s ease';
+                revealedLetters.add(index);
+                
+                if (revealedLetters.size === puzzleWord.length) {
+                    celebratePuzzleCompletion();
+                    setTimeout(() => {
+                        revealNext(2);
+                    }, 2000);
+                }
+            }
+
+            function celebratePuzzleCompletion() {
+                const celebration = document.createElement('div');
+                celebration.classList.add('puzzle-celebration');
+                
+                const emojis = ['🎉', '💝', '✨', '🌟', '💫', '💖', '🎈', '🌸', '💕', '🎊'];
+                
+                // Create multiple emojis with different positions and delays
+                for (let i = 0; i < 30; i++) {
+                    const span = document.createElement('span');
+                    span.classList.add('celebration-emoji');
+                    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    span.style.left = `${Math.random() * 100}%`;
+                    span.style.animationDelay = `${Math.random() * 2}s`;
+                    celebration.appendChild(span);
+                }
+
+                document.body.appendChild(celebration);
+                
+                setTimeout(() => {
+                    celebration.remove();
+                }, 4000);
+            }
+
+            function setupPuzzle() {
+                puzzle.innerHTML = '';
+                
+                // Add decorative elements before puzzle
+                const decorHeader = document.createElement('div');
+                decorHeader.innerHTML = `
+                    <div class="polaroid" style="margin-bottom: 30px;">
+                        <img src="https://i.ibb.co/jbZtzMC/pexels-hakan-hu-1301084-2480524.jpg" alt="Friendship" style="width: 100%; height: 200px; object-fit: cover;">
+                        <p style="margin-top: 10px; font-size: 1.2em;">Let's solve this together! 💫</p>
+                    </div>
+                `;
+                puzzle.parentElement.insertBefore(decorHeader, puzzle);
+
+                // Create puzzle letters with animation delay
+                puzzleWord.split('').forEach((letter, index) => {
+                    const div = document.createElement('div');
+                    div.classList.add('puzzle-letter');
+                    div.textContent = '?';
+                    div.dataset.letter = letter;
+                    div.style.animation = `slideIn 0.5s ${index * 0.1}s forwards`;
+                    div.onclick = () => revealLetter(div, index);
+                    puzzle.appendChild(div);
+                });
+
+                // Add hint section after puzzle
+                const hintSection = document.createElement('div');
+                hintSection.innerHTML = `
+                    <div class="message-box" style="margin-top: 30px; text-align: center;">
+                        <p style="font-size: 1.1em;">💭 Hint: It's something precious that grows stronger with time...</p>
+                        <div style="margin-top: 15px;">
+                            <span style="font-size: 24px;">🤝 💖 🌟</span>
+                        </div>
+                    </div>
+                `;
+                puzzle.parentElement.appendChild(hintSection);
+            }
+
+            const specialMessage = `Hey Harpreet! 🌟
+
+            You know what makes my college days brighter? Seeing you in the corridors! 😊 
+            The way you walk past with that beautiful smile, it literally makes my heart skip a beat! 💓
+
+            I always try to find excuses to take the same route as you between classes... 
+            (Yes, I'm that person who mysteriously appears everywhere! 🙈)
+
+            Your laughter during lunch breaks is like music to my ears! 🎵 
+            And the way your eyes light up when you're talking to your friends... 
+            I can't help but steal glances! 👀✨
+
+            So... what do you say? Want to make these college days even more special? 
+            Coffee in the campus cafe? 🧋 Or maybe that cool pizza place near college? 🍕
+            (I promise I'm less nervous in person! Well... maybe just a little less 😅)
+
+            PS: Your smile is seriously the highlight of my day! ⭐️
+
+            With butterflies in my stomach,
+            Your Secret Admirer 💝`;
+
+            const nextMessage = `✨ Hey Harpreet! ✨
+
+            You know, I've always noticed you back in college, but I don't think I ever got the chance to say hi properly. And now that we're talking here, I'm kind of glad we didn't back then—feels like I would've missed out on discovering the amazing person you are now. 😊
+
+            By the way, I still can't forget how effortlessly you carry yourself. It's like you have this natural charm that just makes you stand out, and I bet you hear this all the time, but your smile? Pure magic. 😍
+
+            Oh, and about that pizza and coffee thing we talked about? 🍕☕ I wasn't kidding—it's definitely something I can picture us enjoying together. Casual, fun, and with someone as interesting as you? Sounds pretty perfect to me. 😌
+
+            Just saying, reconnecting with you has been one of the best things lately. Who knew Instagram would bring back someone so special from college days? 🫶`;
+
+            function typeWriterEffect(message, callback) {
+                const messageBox = document.getElementById('specialMessage');
+                messageBox.innerHTML = ''; // Clear previous content
+                let i = 0;
+
+                function typeWriter() {
+                    if (i < message.length) {
+                        messageBox.innerHTML += message.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50); // Typing speed
+                    } else {
+                        callback(); // Call the callback function when done
+                    }
+                }
+                typeWriter();
+            }
+
+            window.showSpecialMessage = function() {
+                const messageContainer = document.getElementById('messageContainer');
+                messageContainer.style.display = 'block'; // Show the message container
+                
+                typeWriterEffect(specialMessage, function() {
+                    // Append clickable text after the special message is fully displayed
+                    const clickableText = document.createElement('span');
+                    clickableText.className = 'clickable-text';
+                    clickableText.innerHTML = 'Harpreet ethe click kro! ✨';
+                    clickableText.onclick = showNextMessage; // Set the onclick event
+                    document.getElementById('specialMessage').appendChild(clickableText);
+                });
+            };
+
+            window.showNextMessage = function() {
+                const messageBox = document.getElementById('specialMessage');
+                typeWriterEffect(nextMessage, function() {
+                    // No additional actions needed after the next message is displayed
+                });
+            };
+
+            async function searchSong(query) {
+                const songResult = document.getElementById('songResult');
+                songResult.innerHTML = `<div class="message-box">Searching... 🎵</div>`;
+                
+                // Create Spotify embed for the searched song
+                const formattedQuery = encodeURIComponent(query);
+                const spotifyEmbed = `
+                    <div class="message-box">
+                        <iframe style="border-radius:12px" 
+                            src="https://open.spotify.com/embed/search/${formattedQuery}" 
+                            width="100%" 
+                            height="352" 
+                            frameBorder="0" 
+                            allowfullscreen="" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                `;
+                
+                songResult.innerHTML = spotifyEmbed;
+            }
+
+            // Add event listener for the song input
+            function setupSongSearch() {
+                const songInput = document.getElementById('songInput');
+                if (songInput) {
+                    songInput.addEventListener('keyup', function(event) {
+                        // Search when Enter key is pressed
+                        if (event.key === 'Enter') {
+                            searchSong(this.value);
+                        }
+                    });
+
+                    // Add a search button
+                    const searchButton = document.createElement('button');
+                    searchButton.className = 'choice-btn';
+                    searchButton.style.marginLeft = '10px';
+                    searchButton.innerHTML = 'Search 🎵';
+                    searchButton.onclick = () => searchSong(songInput.value);
+                    
+                    songInput.parentNode.appendChild(searchButton);
+                }
+            }
+
+            // Make sure to call setupSongSearch when the document is loaded
+            document.addEventListener('DOMContentLoaded', setupSongSearch);
+
+            function confirmAndPlay(videoId, isConfirmed) {
+                const playerContainer = document.getElementById('playerContainer');
+                const youtubePlayer = document.getElementById('youtubePlayer');
+                
+                if (isConfirmed) {
+                    playerContainer.style.display = 'block';
+                    youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&showinfo=0&rel=0`;
+                    document.querySelector('.choice-container').style.display = 'none';
+                } else {
+                    document.getElementById('songInput').value = '';
+                    document.getElementById('songInput').focus();
+                    document.getElementById('songResult').innerHTML = `
+                        <div class="message-box">
+                            <p>No problem! Try searching for another song 🎵</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Make functions available globally
+            window.confirmAndPlay = confirmAndPlay;
+            window.searchSong = searchSong;
+        });
+    </script>
+</body>
+</html>
