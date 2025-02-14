@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Valentine ❤️</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+            font-family: cursive;
+
+        }
+
+
+
+        body {
+
+            background: #000;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-family: 'Arial', sans-serif;
+
+            color: #fff;
+
+            overflow-x: hidden;
+
+            position: relative;
+
+        }
+
+
+
+        .stars {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+
+        .star {
+
+            position: absolute;
+
+            width: 2px;
+
+            height: 2px;
+
+            background: #fff;
+
+            border-radius: 50%;
+
+            animation: twinkle 1s infinite;
+
+        }
+
+
+
+        @keyframes twinkle {
+
+            0%, 100% { opacity: 1; }
+
+            50% { opacity: 0.3; }
+
+        }
+
+
+
+        .start-btn {
+
+            padding: 15px 30px;
+
+            font-size: 1.2em;
+
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+
+            border: none;
+
+            border-radius: 25px;
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: transform 0.3s;
+
+            z-index: 2;
+
+            box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+
+        }
+
+
+
+        .start-btn:hover {
+
+            transform: scale(1.1);
+
+        }
+
+
+
+        .content {
+
+            display: none;
+
+            padding: 20px;
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            text-align: center;
+
+            z-index: 2;
+
+        }
+
+
+
+        .typewriter-text {
+
+            font-family: 'Brush Script MT', cursive;
+
+            font-size: 1.2em;
+
+            line-height: 1;
+
+            color: #fff;
+
+            text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366;
+
+            margin-bottom: 30px;
+
+            text-align: left;
+
+            white-space: pre-wrap;
+
+        }
+
+
+
+        .emoji {
+
+            position: fixed;
+
+            font-size: 24px;
+
+            animation: floatUp 5s linear;
+
+            z-index: 1;
+
+        }
+
+
+
+        @keyframes floatUp {
+
+            from {
+
+                transform: translateY(100vh);
+
+                opacity: 1;
+
+            }
+
+            to {
+
+                transform: translateY(-100vh);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+
+        .game-container {
+
+            display: none !important;
+
+            margin-top: 30px;
+
+            padding: 20px;
+
+            background: rgba(255, 255, 255, 0.1);
+
+            border-radius: 15px;
+
+            max-width: 500px;
+
+            width: 100%;
+
+        }
+
+
+
+        .memory-game {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .card {
+
+            aspect-ratio: 1;
+
+            background: #ff3366;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.5em;
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .card.flipped {
+
+            transform: rotateY(180deg);
+
+            background: #fff;
+
+            color: #ff3366;
+
+        }
+
+
+
+        #audio-control {
+
+            position: fixed;
+
+            top: 20px;
+
+            right: 20px;
+
+            z-index: 3;
+
+            background: rgba(255, 255, 255, 0.2);
+
+            border: none;
+
+            border-radius: 50%;
+
+            width: 40px;
+
+            height: 40px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            font-size: 20px;
+
+        }
+
+
+
+        .full-screen-typewriter {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100vh;
+
+            background: rgba(0, 0, 0, 0.95);
+
+            padding: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: flex-start;
+
+            z-index: 1000;
+
+            font-family: 'Brush Script MT', cursive;
+
+            overflow-y: auto;
+
+        }
+
+
+
+        .full-screen-typewriter .typewriter-content {
+
+            width: 90%;
+
+            max-width: 1200px;
+
+            color: #fff;
+
+            text-shadow: 0 0 10px #ff3366, 
+
+                         0 0 20px #ff3366,
+
+                         0 0 30px #ff3366,
+
+                         0 0 40px #ff3366;
+
+            font-size: 1.5em;
+
+            line-height: 1.2;
+
+            white-space: pre-wrap;
+
+            text-align: center;
+
+            margin-top: 50px;
+
+        }
+
+
+
+        .final-yes-btn {
+
+            position: fixed;
+
+            bottom: 50px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            padding: 20px 60px !important;
+
+            font-size: 28px !important;
+
+            background: linear-gradient(45deg, #ff3366, #ff6b6b) !important;
+
+            border: none;
+
+            border-radius: 50px !important;
+
+            color: white;
+
+            cursor: pointer;
+
+            box-shadow: 0 0 30px rgba(255, 51, 102, 0.8) !important;
+
+            transition: all 0.3s ease;
+
+            font-family: 'Brush Script MT', cursive;
+
+            z-index: 1001;
+
+        }
+
+
+
+        .final-yes-btn:hover {
+
+            transform: translateX(-50%) scale(1.1) !important;
+
+            box-shadow: 0 0 40px rgba(255, 51, 102, 0.9) !important;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <button class="start-btn">Click Me, My Love ❤️</button>
+
+    <button id="audio-control">🔊</button>
+
+    <div class="content">
+
+        <div class="typewriter-text"></div>
+
+        <div class="game-container">
+
+            <h3>Find matching love pairs 💕</h3>
+
+            <div class="memory-game"></div>
+
+        </div>
+
+    </div>
+
+    <audio id="background-music" loop>
+
+        <source src="https://cdnsongs.com/dren/music/data/Single_Track/201602/Dil/320/Dil_1.mp3/Dil.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+
+    <script>
+
+        const loveMessage = `My Dearest Valentine ❤️
+
+You are the sunshine that brightens my darkest days, the melody that makes my heart sing, and the love that gives meaning to my life 🌟
+Every moment with you is a treasure, and every day by your side is a blessing. You are not just my love, but my best friend, my soulmate, and my everything 💑
+Your love makes every day feel like Valentine's Day. I promise to love you more with each passing day and to always be there for you 💝
+I love you more than words can say, more than hearts can hold, and more than stars in the night sky ✨
+
+Happy Valentine's Day, my love! 💖`;
+
+
+
+        const hiddenMessage = `Yay! I'm beyond thrilled that you said yes! You make every day feel like Valentine's Day, and I'm so grateful to have you by my side.
+
+
+I promise to make this Valentine's Day one to remember, filled with love, laughter, and all your favorite things.
+
+
+Thank you for being my forever love, my partner in crime, and my best friend. I love you more than words can express.
+
+
+Can't wait to celebrate with you, Love you my dear wife I love you so much.`;
+
+
+
+        const emojis = ['❤️', '💖', '💝', '💕', '💗', '💓', '💞', '💘', '🌹', '✨', '💑', '😘'];
+
+        const gameEmojis = ['❤️', '💖', '💝', '💕', '💗', '💓', '💞', '💘'];
+
+        let audioPlaying = false;
+
+        const audio = document.getElementById('background-music');
+
+        const audioControl = document.getElementById('audio-control');
+
+
+
+        // Create stars
+
+        function createStars() {
+
+            const starsContainer = document.querySelector('.stars');
+
+            for (let i = 0; i < 100; i++) {
+
+                const star = document.createElement('div');
+
+                star.className = 'star';
+
+                star.style.left = `${Math.random() * 100}%`;
+
+                star.style.top = `${Math.random() * 100}%`;
+
+                star.style.animationDelay = `${Math.random() * 2}s`;
+
+                starsContainer.appendChild(star);
+
+            }
+
+        }
+
+
+
+        // Create floating emojis
+
+        function createEmoji() {
+
+            const emoji = document.createElement('div');
+
+            emoji.className = 'emoji';
+
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+            emoji.style.left = `${Math.random() * 100}%`;
+
+            document.body.appendChild(emoji);
+
+            
+
+            emoji.addEventListener('animationend', () => {
+
+                emoji.remove();
+
+            });
+
+        }
+
+
+
+        // Modify typeWriter function
+
+        function typeWriter(text, element, speed = 50) {
+
+            let i = 0;
+
+            function type() {
+
+                if (i < text.length) {
+
+                    element.innerHTML = text.substring(0, i + 1);
+
+                    i++;
+
+                    element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+                    setTimeout(type, speed);
+
+                } else {
+
+                    // Show proposal buttons after typing
+
+                    showProposalButtons();
+
+                }
+
+            }
+
+            type();
+
+        }
+
+
+
+        // Add new functions for proposal
+
+        function showProposalButtons() {
+
+            const proposalDiv = document.createElement('div');
+
+            proposalDiv.style.cssText = `
+
+                position: fixed;
+
+                top: 50%;
+
+                left: 50%;
+
+                transform: translate(-50%, -50%);
+
+                background: rgba(0, 0, 0, 0.8);
+
+                padding: 30px;
+
+                border-radius: 15px;
+
+                text-align: center;
+
+                z-index: 1000;
+
+            `;
+
+
+
+            const question = document.createElement('div');
+
+            question.innerHTML = 'Would you be my valentine?';
+
+            question.style.cssText = `
+
+                font-family: 'Arial', sans-serif;
+
+                font-size: 24px;
+
+                color: #fff;
+
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366;
+
+                margin-bottom: 20px;
+
+            `;
+
+
+
+            const buttonContainer = document.createElement('div');
+
+            buttonContainer.style.display = 'flex';
+
+            buttonContainer.style.gap = '20px';
+
+            buttonContainer.style.justifyContent = 'center';
+
+
+
+            const yesBtn = createButton('Yes');
+
+            const noBtn = createButton('No');
+
+
+
+            yesBtn.onclick = handleYes;
+
+            noBtn.onclick = handleNo;
+
+
+
+            buttonContainer.appendChild(yesBtn);
+
+            buttonContainer.appendChild(noBtn);
+
+            proposalDiv.appendChild(question);
+
+            proposalDiv.appendChild(buttonContainer);
+
+            document.body.appendChild(proposalDiv);
+
+        }
+
+
+
+        function createButton(text) {
+
+            const button = document.createElement('button');
+
+            button.innerText = text;
+
+            button.style.cssText = `
+
+                padding: 10px 30px;
+
+                font-size: 18px;
+
+                border: none;
+
+                border-radius: 25px;
+
+                background: linear-gradient(45deg, #ff3366, #ff6b6b);
+
+                color: white;
+
+                cursor: pointer;
+
+                transition: transform 0.3s;
+
+                box-shadow: 0 0 20px rgba(255, 51, 102, 0.5);
+
+            `;
+
+            button.onmouseover = () => button.style.transform = 'scale(1.1)';
+
+            button.onmouseout = () => button.style.transform = 'scale(1)';
+
+            return button;
+
+        }
+
+
+
+        function handleYes() {
+
+            // Hide the proposal div
+
+            const proposalDiv = document.querySelector('div[style*="background: rgba(0, 0, 0, 0.8)"]');
+
+            if (proposalDiv) {
+
+                proposalDiv.style.display = 'none';
+
+            }
+
+
+
+            // Stop music
+
+            audio.pause();
+
+            audioPlaying = false;
+
+            audioControl.textContent = '🔈';
+
+
+
+            // Show rose image
+
+            const roseImage = document.createElement('div');
+
+            roseImage.style.cssText = `
+
+                position: fixed;
+
+                top: 0;
+
+                left: 0;
+
+                width: 100%;
+
+                height: 100%;
+
+                background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExa24wemcyOXhtNHJiY2F2YmQ3eDMwOXRpOGZ1NjZvejhkYTZuZGVzbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/L4NdxLGpIF1Rhft6n3/giphy.gif') center/cover no-repeat;
+
+                z-index: 1000;
+
+            `;
+
+            document.body.appendChild(roseImage);
+
+
+
+            // Text to speech
+
+            const speech = new SpeechSynthesisUtterance(hiddenMessage);
+
+            speech.rate = 0.9;
+
+            speech.pitch = 1;
+
+            window.speechSynthesis.speak(speech);
+
+        }
+
+
+
+        function handleNo() {
+
+            const impressMessage = `My darling, let me tell you why you're so special...
+Every smile of yours lights up my world like a thousand stars ✨
+Your laugh is the sweetest melody I've ever heard 🎵
+Your presence makes my heart skip a beat 💓
+You're the missing piece that makes my life complete 💝
+I promise to cherish every moment with you, to make you smile every day, and to love you unconditionally forever 🌹`;
+
+
+
+            // Hide the old typewriter text
+
+            const oldTypewriter = document.querySelector('.typewriter-text');
+
+            if (oldTypewriter) {
+
+                oldTypewriter.style.display = 'none';
+
+            }
+
+
+
+            // Remove the old proposal div
+
+            const oldProposalDiv = document.querySelector('div[style*="background: rgba(0, 0, 0, 0.8)"]');
+
+            if (oldProposalDiv) {
+
+                oldProposalDiv.remove();
+
+            }
+
+            
+
+            // Create full-screen typewriter container
+
+            const fullScreenDiv = document.createElement('div');
+
+            fullScreenDiv.className = 'full-screen-typewriter';
+
+            
+
+            // Add typewriter text container
+
+            const typewriterDiv = document.createElement('div');
+
+            typewriterDiv.className = 'typewriter-content';
+
+            fullScreenDiv.appendChild(typewriterDiv);
+
+            
+
+            document.body.appendChild(fullScreenDiv);
+
+
+
+            // Start typewriter effect
+
+            let i = 0;
+
+            function type() {
+
+                if (i < impressMessage.length) {
+
+                    typewriterDiv.innerHTML = impressMessage.substring(0, i + 1);
+
+                    i++;
+
+                    // Auto scroll as text appears
+
+                    window.scrollTo(0, document.body.scrollHeight);
+
+                    setTimeout(type, 50);
+
+                } else {
+
+                    // After typing finished, show only Yes button
+
+                    const finalYesBtn = document.createElement('button');
+
+                    finalYesBtn.className = 'final-yes-btn';
+
+                    finalYesBtn.textContent = 'Yes';
+
+                    finalYesBtn.onclick = handleYes;
+
+                    document.body.appendChild(finalYesBtn);
+
+                }
+
+            }
+
+            type();
+
+        }
+
+
+
+        // Memory Game
+
+        function initializeMemoryGame() {
+
+            const gameContainer = document.querySelector('.memory-game');
+
+            const gameCards = [...gameEmojis, ...gameEmojis];
+
+            let flippedCards = [];
+
+            let matchedPairs = 0;
+
+
+
+            // Shuffle cards
+
+            gameCards.sort(() => Math.random() - 0.5);
+
+
+
+            // Create cards
+
+            gameCards.forEach((emoji, index) => {
+
+                const card = document.createElement('div');
+
+                card.className = 'card';
+
+                card.dataset.emoji = emoji;
+
+                card.dataset.index = index;
+
+                
+
+                card.addEventListener('click', () => {
+
+                    if (!card.classList.contains('flipped') && flippedCards.length < 2) {
+
+                        card.classList.add('flipped');
+
+                        card.textContent = emoji;
+
+                        flippedCards.push(card);
+
+
+
+                        if (flippedCards.length === 2) {
+
+                            setTimeout(checkMatch, 1000);
+
+                        }
+
+                    }
+
+                });
+
+
+
+                gameContainer.appendChild(card);
+
+            });
+
+
+
+            function checkMatch() {
+
+                const [card1, card2] = flippedCards;
+
+                if (card1.dataset.emoji === card2.dataset.emoji) {
+
+                    matchedPairs++;
+
+                    if (matchedPairs === gameEmojis.length) {
+
+                        alert('Congratulations! You found all the matches! 💕');
+
+                    }
+
+                } else {
+
+                    card1.classList.remove('flipped');
+
+                    card2.classList.remove('flipped');
+
+                    card1.textContent = '';
+
+                    card2.textContent = '';
+
+                }
+
+                flippedCards = [];
+
+            }
+
+        }
+
+
+
+        // Start button click handler
+
+        document.querySelector('.start-btn').addEventListener('click', function() {
+
+            this.style.display = 'none';
+
+            document.querySelector('.content').style.display = 'block';
+
+            
+
+            // Start emoji animation
+
+            setInterval(createEmoji, 1000);
+
+            
+
+            // Start typewriter
+
+            typeWriter(loveMessage, document.querySelector('.typewriter-text'));
+
+
+
+            // Play music
+
+            audio.play();
+
+            audioPlaying = true;
+
+            audioControl.textContent = '🔊';
+
+        });
+
+
+
+        // Audio control
+
+        audioControl.addEventListener('click', () => {
+
+            if (audioPlaying) {
+
+                audio.pause();
+
+                audioControl.textContent = '🔈';
+
+            } else {
+
+                audio.play();
+
+                audioControl.textContent = '🔊';
+
+            }
+
+            audioPlaying = !audioPlaying;
+
+        });
+
+
+
+        // Initialize stars
+
+        createStars();
+
+    </script>
+
+</body>
+
+</html>
+
+
+
